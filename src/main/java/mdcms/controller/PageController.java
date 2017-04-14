@@ -40,6 +40,9 @@ public class PageController {
 	RightSidebarService rightSidebarService;
 
 	@Autowired
+	GalleryService galleryService;
+
+	@Autowired
 	NavigationMenuService navigationMenuService;
 
 	@RequestMapping(value = {"/", "home", "posts"}, method = RequestMethod.GET)
@@ -95,6 +98,12 @@ public class PageController {
 	public String page(@PathVariable String addressId, ModelMap model) {
 		model.addAttribute("page", pageService.getPageByAddressId(addressId));
 		return "page";
+	}
+
+	@RequestMapping(value = { "gallery" }, method = RequestMethod.GET)
+	public String gallery(ModelMap model) {
+		model.addAttribute("gallery", galleryService.getGallery());
+		return "gallery";
 	}
 
 	@ModelAttribute("generalConfig")

@@ -62,6 +62,9 @@ public class AdminController {
 	RightSidebarService rightSidebarService;
 
 	@Autowired
+	GalleryService galleryService;
+
+	@Autowired
 	MessageSource messageSource;
 
 	@Autowired
@@ -642,6 +645,75 @@ public class AdminController {
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "admin/myprofile-success";
 	}
+
+	/** Gallery */
+
+	@RequestMapping(value = "/admin/gallery/list", method = RequestMethod.GET)
+	public String listGalleryAdmin(ModelMap model) {
+		List<Gallery> gallery = galleryService.getGallery();
+		model.addAttribute("gallery", gallery);
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "admin/gallery/list";
+	}
+
+	@RequestMapping(value = { "/admin/gallery/new" }, method = RequestMethod.GET)
+	public String newImage(ModelMap model) {
+		model.addAttribute("image", new Gallery());
+		model.addAttribute("edit", false);
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "admin/gallery/image";
+	}
+
+	@RequestMapping(value = { "/admin/gallery/new" }, method = RequestMethod.POST)
+	public String saveImage(@Valid Gallery image, BindingResult result,
+						   ModelMap model) {
+
+		if (result.hasErrors()) {
+			model.addAttribute("loggedinuser", getPrincipal());
+			return "admin/gallery/image";
+		}
+
+
+		galleryService.addImage(image);
+
+		model.addAttribute("success", "Image " + image.getTitle()  + " added successfully");
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "admin/gallery/image-success";
+	}
+
+
+	@RequestMapping(value = { "/admin/gallery/edit-{id}" }, method = RequestMethod.GET)
+	public String editImage(@PathVariable int id, ModelMap model) {
+		model.addAttribute("image", galleryService.getImage(id));
+		model.addAttribute("edit", true);
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "admin/gallery/image";
+	}
+
+	@RequestMapping(value = { "/admin/gallery/edit-{id}" }, method = RequestMethod.POST)
+	public String updateUser(@Valid Gallery image, BindingResult result,
+							 ModelMap model, @PathVariable int id) {
+
+		if (result.hasErrors()) {
+			model.addAttribute("edit", true);
+			model.addAttribute("loggedinuser", getPrincipal());
+			return "admin/gallery/image";
+		}
+
+		galleryService.addImage(image);
+
+		model.addAttribute("success", "Image " + image.getTitle() + " updated successfully");
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "admin/gallery/image-success";
+	}
+
+
+	@RequestMapping(value = { "/admin/gallery/delete-{id}" }, method = RequestMethod.GET)
+	public String deleteImage(@PathVariable int id) {
+		galleryService.deleteImage(id);
+		return "redirect:/admin/gallery/list";
+	}
+
 
 	/** Roles */
 	@ModelAttribute("roles")

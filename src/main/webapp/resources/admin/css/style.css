@@ -57,7 +57,6 @@
     float: left;
     position: absolute;
     margin-top: 0;
-    /*border: 1px solid rgba(0,0,0,.15);*/
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     background-color: #fff;
@@ -83,7 +82,6 @@
         border-top: 1px rgba(0,0,0,.5) solid;
         overflow-y: auto;
         background-color: #222;
-        /*background-color: #5A6B7D;*/
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
@@ -110,7 +108,6 @@
     display: block;
     padding: 10px 15px 10px 38px;
     text-decoration: none;
-    /*color: #999;*/
     color: #fff;    
 }
 
@@ -149,5 +146,6 @@ footer {
 }
 
 footer a {
-    color: yellow;
+    color: black;
+    text-shadow: white 0px 0px 5px;
 }

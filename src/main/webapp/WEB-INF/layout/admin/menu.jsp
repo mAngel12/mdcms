@@ -51,7 +51,7 @@
 <li>
 	<a data-toggle="collapse" data-target="#submenu-6"><i class="fa fa-fw fa-magic"></i> Other<i class="fa fa-fw fa-angle-down pull-right"></i></a>
 	<ul id="submenu-6" class="collapse">
-		<li><a href="/admin/other/gallery"><i class="fa fa-angle-double-right"></i> Gallery</a></li>
-		<li><a href="/admin/other/contactform"><i class="fa fa-angle-double-right"></i> Contact Form</a></li>
+		<li><a href="/admin/gallery/list"><i class="fa fa-angle-double-right"></i> Gallery</a></li>
+		<li><a href="/admin/contactform/"><i class="fa fa-angle-double-right"></i> Contact Form</a></li>
 	</ul>
 </li>

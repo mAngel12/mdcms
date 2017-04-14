@@ -1,0 +1,9 @@
+.modal-dialog {
+    width:600px;
+}
+.modal-body {
+    text-align:center;
+}
+.thumbnail {
+    margin-bottom:6px;
+}

@@ -28,6 +28,21 @@
         <put-attribute name="body" value="/WEB-INF/views/postcategory.jsp"/>
     </definition>
 
+
+    <definition name="galleries"
+                template="/WEB-INF/layout/default/page-gallery.jsp">
+        <put-attribute name="header" value="/WEB-INF/layout/default/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/layout/default/menu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/default/footer.jsp"/>
+        <put-attribute name="leftpanel" value="/WEB-INF/layout/default/leftpanel.jsp"/>
+        <put-attribute name="rightpanel" value="/WEB-INF/layout/default/rightpanel.jsp"/>
+    </definition>
+
+    <definition name="gallery" extends="galleries">
+        <put-attribute name="title" value="Gallery"/>
+        <put-attribute name="body" value="/WEB-INF/views/gallery.jsp"/>
+    </definition>
+
     <definition name="pages"
                 template="/WEB-INF/layout/default/page-pages.jsp">
         <put-attribute name="header" value="/WEB-INF/layout/default/header.jsp"/>
@@ -167,11 +182,24 @@
     </definition>
 
     <definition name="admin/myprofile" extends="admin/base">
-        <put-attribute name="title" value="Edit Profile - mdCMS Admin Panel"/>
-        <put-attribute name="body" value="/WEB-INF/views/admin/myprofile.jsp" />
-    </definition>
+    <put-attribute name="title" value="Edit Profile - mdCMS Admin Panel"/>
+    <put-attribute name="body" value="/WEB-INF/views/admin/myprofile.jsp" />
+</definition>
     <definition name="admin/myprofile-success" extends="admin/base">
         <put-attribute name="title" value="Edit Profile Success Updated - mdCMS Admin Panel"/>
         <put-attribute name="body" value="/WEB-INF/views/admin/myprofile-success.jsp" />
+    </definition>
+
+    <definition name="admin/gallery/list" extends="admin/base">
+        <put-attribute name="title" value="Gallery Image List - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/gallery/list.jsp" />
+    </definition>
+    <definition name="admin/gallery/image" extends="admin/base">
+        <put-attribute name="title" value="Image Configuration - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/gallery/image.jsp" />
+    </definition>
+    <definition name="admin/gallery/image-success" extends="admin/base">
+        <put-attribute name="title" value="Image Configuration Success - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/gallery/image-success.jsp" />
     </definition>
 </tiles-definitions>
