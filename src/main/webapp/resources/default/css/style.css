@@ -1,0 +1,73 @@
+body {
+	background-color: silver;
+}
+
+.header {
+	background-color: #171516;
+}
+
+.header h1, .header h3 {
+	text-align: left;
+	color: #c0c0c0;
+}
+
+.header h1 {
+	font-size: 55px;
+	font-family:'Buenard', serif;
+	font-weight: bold;
+	text-transform: inherit;
+	margin: 0px auto 0px;
+}
+
+.header h3 {
+	font-size: 13px;
+	font-weight: lighter;
+	margin: 0px auto 15px;
+}
+
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+    
+.row.content {
+	height: auto;
+}
+    
+.sidenav {
+	padding-top: 20px;
+	background-color: silver;
+	height: auto;
+}
+
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}
+
+footer a {
+	color: yellow;
+}
+
+.col-sm-8 {
+	background-color: #ffffff;
+}
+
+.viewpost {
+	text-align: right;
+}
+
+.viewall {
+	text-align: center;
+}
+@media screen and (max-width: 800px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	}
+
+	.row.content {
+		height:auto;
+	} 
+}

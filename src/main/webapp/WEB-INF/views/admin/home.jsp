@@ -1,0 +1,1 @@
+<h2>Dear <strong>${loggedinuser}</strong>, Welcome to Admin Panel!</h2>

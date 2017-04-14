@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="base"
+                template="/WEB-INF/layout/default/page.jsp">
+        <put-attribute name="header" value="/WEB-INF/layout/default/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/layout/default/menu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/default/footer.jsp"/>
+        <put-attribute name="leftpanel" value="/WEB-INF/layout/default/leftpanel.jsp"/>
+        <put-attribute name="rightpanel" value="/WEB-INF/layout/default/rightpanel.jsp"/>
+    </definition>
+    <definition name="home" extends="base">
+        <put-attribute name="title" value="Home"/>
+        <put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+    </definition>
+    <definition name="post" extends="base">
+        <put-attribute name="title" value="Post"/>
+        <put-attribute name="body" value="/WEB-INF/views/post.jsp" />
+    </definition>
+    <definition name="allposts" extends="base">
+        <put-attribute name="title" value="Posts"/>
+        <put-attribute name="body" value="/WEB-INF/views/allposts.jsp"/>
+    </definition>
+    <definition name="postcategory" extends="base">
+        <put-attribute name="title" value="Posts by Category"/>
+        <put-attribute name="body" value="/WEB-INF/views/postcategory.jsp"/>
+    </definition>
+
+    <definition name="pages"
+                template="/WEB-INF/layout/default/page-pages.jsp">
+        <put-attribute name="header" value="/WEB-INF/layout/default/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/layout/default/menu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/default/footer.jsp"/>
+        <put-attribute name="leftpanel" value="/WEB-INF/layout/default/leftpanel.jsp"/>
+        <put-attribute name="rightpanel" value="/WEB-INF/layout/default/rightpanel.jsp"/>
+    </definition>
+    <definition name="page" extends="pages">
+        <put-attribute name="body" value="/WEB-INF/views/page.jsp" />
+    </definition>
+
+    <definition name="single-page"
+                template="/WEB-INF/layout/single-page.jsp">
+    </definition>
+    <definition name="login" extends="single-page">
+        <put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+    </definition>
+    <definition name="admin/accessdenied" extends="admin/base">
+        <put-attribute name="title" value="Access Denied - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/accessdenied.jsp" />
+    </definition>
+
+
+    <definition name="admin/base"
+                template="/WEB-INF/layout/admin/page.jsp">
+        <put-attribute name="header" value="/WEB-INF/layout/admin/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/layout/admin/menu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/admin/footer.jsp"/>
+    </definition>
+    <definition name="admin/home" extends="admin/base">
+        <put-attribute name="title" value="Home - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/home.jsp" />
+    </definition>
+
+    <definition name="admin/users/list" extends="admin/base">
+        <put-attribute name="title" value="Users List - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/users/list.jsp" />
+    </definition>
+    <definition name="admin/users/user" extends="admin/base">
+        <put-attribute name="title" value="User Configuration - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/users/user.jsp" />
+    </definition>
+    <definition name="admin/users/user-success" extends="admin/base">
+        <put-attribute name="title" value="User Configuration Success - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/users/user-success.jsp" />
+    </definition>
+
+    <definition name="admin/posts/posts" extends="admin/base">
+        <put-attribute name="title" value="Posts List - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/posts/posts.jsp" />
+    </definition>
+    <definition name="admin/posts/post" extends="admin/base">
+        <put-attribute name="title" value="Post Configuration - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/posts/post.jsp" />
+    </definition>
+    <definition name="admin/posts/post-success" extends="admin/base">
+        <put-attribute name="title" value="Post Configuration Success - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/posts/post-success.jsp" />
+    </definition>
+    <definition name="admin/posts/categories" extends="admin/base">
+        <put-attribute name="title" value="Categories List - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/posts/categories.jsp" />
+    </definition>
+    <definition name="admin/posts/category" extends="admin/base">
+        <put-attribute name="title" value="Category Configuration - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/posts/category.jsp" />
+    </definition>
+    <definition name="admin/posts/category-success" extends="admin/base">
+        <put-attribute name="title" value="Category Configuration Success - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/posts/category-success.jsp" />
+    </definition>
+    <definition name="admin/posts/comments" extends="admin/base">
+        <put-attribute name="title" value="Comments List - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/posts/comments.jsp" />
+    </definition>
+
+    <definition name="admin/config/general" extends="admin/base">
+        <put-attribute name="title" value="General Configuration - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/config/general.jsp" />
+    </definition>
+    <definition name="admin/config/general-success" extends="admin/base">
+        <put-attribute name="title" value="General Configuration Success - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/config/general-success.jsp" />
+    </definition>
+
+    <definition name="admin/pages/list" extends="admin/base">
+        <put-attribute name="title" value="Pages List - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/pages/list.jsp" />
+    </definition>
+    <definition name="admin/pages/page" extends="admin/base">
+        <put-attribute name="title" value="Page Configuration - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/pages/page.jsp" />
+    </definition>
+    <definition name="admin/pages/page-success" extends="admin/base">
+        <put-attribute name="title" value="Page Configuration Success - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/pages/page-success.jsp" />
+    </definition>
+
+    <definition name="admin/website/navmenu_list" extends="admin/base">
+        <put-attribute name="title" value="Navigation Menu Links List - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/website/navmenu_list.jsp" />
+    </definition>
+    <definition name="admin/website/navmenu" extends="admin/base">
+        <put-attribute name="title" value="Navigation Menu Configuration - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/website/navmenu.jsp" />
+    </definition>
+    <definition name="admin/website/navmenu-success" extends="admin/base">
+        <put-attribute name="title" value="Navigation Menu Configuration Success - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/website/navmenu-success.jsp" />
+    </definition>
+
+    <definition name="admin/website/leftsidebar_list" extends="admin/base">
+        <put-attribute name="title" value="Left Sidebar Panels List - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/website/leftsidebar_list.jsp" />
+    </definition>
+    <definition name="admin/website/leftsidebar" extends="admin/base">
+        <put-attribute name="title" value="Left Sidebar Configuration - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/website/leftsidebar.jsp" />
+    </definition>
+    <definition name="admin/website/leftsidebar-success" extends="admin/base">
+        <put-attribute name="title" value="Left Sidebar Configuration Success - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/website/leftsidebar-success.jsp" />
+    </definition>
+
+    <definition name="admin/website/rightsidebar_list" extends="admin/base">
+        <put-attribute name="title" value="Right Sidebar Panels List - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/website/rightsidebar_list.jsp" />
+    </definition>
+    <definition name="admin/website/rightsidebar" extends="admin/base">
+        <put-attribute name="title" value="Right Sidebar Configuration - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/website/rightsidebar.jsp" />
+    </definition>
+    <definition name="admin/website/rightsidebar-success" extends="admin/base">
+        <put-attribute name="title" value="Right Sidebar Configuration Success - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/website/rightsidebar-success.jsp" />
+    </definition>
+
+    <definition name="admin/myprofile" extends="admin/base">
+        <put-attribute name="title" value="Edit Profile - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/myprofile.jsp" />
+    </definition>
+    <definition name="admin/myprofile-success" extends="admin/base">
+        <put-attribute name="title" value="Edit Profile Success Updated - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/myprofile-success.jsp" />
+    </definition>
+</tiles-definitions>

@@ -1,0 +1,1 @@
+<p>Powered by <a href="http://dultzdev.com">mdCMS</a> Copyright 2017 by Michael D&#369;ltz.</p>
