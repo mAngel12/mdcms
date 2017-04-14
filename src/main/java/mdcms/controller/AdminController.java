@@ -76,6 +76,14 @@ public class AdminController {
 	/** Admin Homepage */
 	@RequestMapping(value = { "/admin/", "/admin/home" }, method = RequestMethod.GET)
 	public String homeAdmin(ModelMap model) {
+		model.addAttribute("site", generalConfigurationService.getConfig());
+		model.addAttribute("numberOfPosts", postService.getPosts().size());
+		model.addAttribute("numberOfCategories", postCategoryService.getCategories().size());
+		model.addAttribute("lastPost", postService.getLastPosts(1).get(0));
+		model.addAttribute("numberOfComments", postCommentService.getComments().size());
+		model.addAttribute("numberOfUsers", userService.findAllUsers().size());
+		model.addAttribute("numberOfPages", pageService.getPages().size());
+		model.addAttribute("numberOfImages",galleryService.getGallery().size());
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "admin/home";
 	}
