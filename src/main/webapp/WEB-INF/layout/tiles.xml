@@ -65,6 +65,10 @@
     <definition name="login" extends="single-page">
         <put-attribute name="body" value="/WEB-INF/views/login.jsp" />
     </definition>
+    <definition name="error" extends="single-page">
+        <put-attribute name="body" value="/WEB-INF/views/error.jsp" />
+    </definition>
+
     <definition name="admin/accessdenied" extends="admin/base">
         <put-attribute name="title" value="Access Denied - mdCMS Admin Panel"/>
         <put-attribute name="body" value="/WEB-INF/views/admin/accessdenied.jsp" />
