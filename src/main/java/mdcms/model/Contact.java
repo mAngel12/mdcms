@@ -1,22 +1,22 @@
 package mdcms.model;
 
+
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="POST_COMMENTS")
-public class PostComment {
+@Table(name="CONTACT")
+public class Contact {
 
     @Id
-    @Column(name="ID")
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "ID")
+    private Integer id;
 
     @NotNull
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -25,17 +25,20 @@ public class PostComment {
     private LocalDate date;
 
     @NotEmpty
-    @Column(name="AUTHOR")
+    @Column(name = "AUTHOR")
     private String author;
 
     @NotEmpty
-    @Column(name="CONTENT")
+    @Column(name = "EMAIL")
+    private String email;
+
+    @NotEmpty
+    @Column(name = "CONTENT")
     private String content;
 
-    @NotNull
-    @OneToOne
-    @JoinColumn(name="POST_ID")
-    private Post post;
+    @NotEmpty
+    @Column(name = "READED")
+    private String readed;
 
     public Integer getId() {
         return id;
@@ -58,6 +61,13 @@ public class PostComment {
         this.author = author;
     }
 
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getContent() {
         return content;
     }
@@ -65,11 +75,11 @@ public class PostComment {
         this.content = content;
     }
 
-    public Post getPost() {
-        return post;
+    public String getReaded() {
+        return readed;
     }
-    public void setPost(Post post) {
-        this.post = post;
+    public void setReaded(String readed) {
+        this.readed = readed;
     }
 
 }

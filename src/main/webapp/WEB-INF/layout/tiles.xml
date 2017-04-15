@@ -27,6 +27,10 @@
         <put-attribute name="title" value="Posts by Category"/>
         <put-attribute name="body" value="/WEB-INF/views/postcategory.jsp"/>
     </definition>
+    <definition name="contact" extends="base">
+        <put-attribute name="title" value="Contact Form"/>
+        <put-attribute name="body" value="/WEB-INF/views/contact.jsp"/>
+    </definition>
 
 
     <definition name="galleries"
@@ -201,5 +205,10 @@
     <definition name="admin/gallery/image-success" extends="admin/base">
         <put-attribute name="title" value="Image Configuration Success - mdCMS Admin Panel"/>
         <put-attribute name="body" value="/WEB-INF/views/admin/gallery/image-success.jsp" />
+    </definition>
+
+    <definition name="admin/contactform" extends="admin/base">
+        <put-attribute name="title" value="Contact Form Post List - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/contactform.jsp" />
     </definition>
 </tiles-definitions>

@@ -65,6 +65,9 @@ public class AdminController {
 	GalleryService galleryService;
 
 	@Autowired
+	ContactService contactService;
+
+	@Autowired
 	MessageSource messageSource;
 
 	@Autowired
@@ -83,6 +86,8 @@ public class AdminController {
 		model.addAttribute("numberOfComments", postCommentService.getComments().size());
 		model.addAttribute("numberOfUsers", userService.findAllUsers().size());
 		model.addAttribute("numberOfPages", pageService.getPages().size());
+		model.addAttribute("numberOfNotReadedMsg", contactService.getContactPostsNotReaded().size());
+		model.addAttribute("numberOfMsg", contactService.getContactPosts().size());
 		model.addAttribute("numberOfImages",galleryService.getGallery().size());
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "admin/home";
@@ -666,14 +671,14 @@ public class AdminController {
 
 	@RequestMapping(value = { "/admin/gallery/new" }, method = RequestMethod.GET)
 	public String newImage(ModelMap model) {
-		model.addAttribute("image", new Gallery());
+		model.addAttribute("gallery", new Gallery());
 		model.addAttribute("edit", false);
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "admin/gallery/image";
 	}
 
 	@RequestMapping(value = { "/admin/gallery/new" }, method = RequestMethod.POST)
-	public String saveImage(@Valid Gallery image, BindingResult result,
+	public String saveImage(@Valid Gallery gallery, BindingResult result,
 						   ModelMap model) {
 
 		if (result.hasErrors()) {
@@ -682,9 +687,9 @@ public class AdminController {
 		}
 
 
-		galleryService.addImage(image);
+		galleryService.addImage(gallery);
 
-		model.addAttribute("success", "Image " + image.getTitle()  + " added successfully");
+		model.addAttribute("success", "Image " + gallery.getTitle()  + " added successfully");
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "admin/gallery/image-success";
 	}
@@ -692,14 +697,14 @@ public class AdminController {
 
 	@RequestMapping(value = { "/admin/gallery/edit-{id}" }, method = RequestMethod.GET)
 	public String editImage(@PathVariable int id, ModelMap model) {
-		model.addAttribute("image", galleryService.getImage(id));
+		model.addAttribute("gallery", galleryService.getImage(id));
 		model.addAttribute("edit", true);
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "admin/gallery/image";
 	}
 
 	@RequestMapping(value = { "/admin/gallery/edit-{id}" }, method = RequestMethod.POST)
-	public String updateUser(@Valid Gallery image, BindingResult result,
+	public String updateUser(@Valid Gallery gallery, BindingResult result,
 							 ModelMap model, @PathVariable int id) {
 
 		if (result.hasErrors()) {
@@ -708,9 +713,9 @@ public class AdminController {
 			return "admin/gallery/image";
 		}
 
-		galleryService.addImage(image);
+		galleryService.addImage(gallery);
 
-		model.addAttribute("success", "Image " + image.getTitle() + " updated successfully");
+		model.addAttribute("success", "Image " + gallery.getTitle() + " updated successfully");
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "admin/gallery/image-success";
 	}
@@ -722,6 +727,41 @@ public class AdminController {
 		return "redirect:/admin/gallery/list";
 	}
 
+	/** Contact Form */
+
+	@RequestMapping(value = "/admin/contactform", method = RequestMethod.GET)
+	public String listContactMsgAdmin(ModelMap model) {
+		List<Contact> notReadedMsg = contactService.getContactPostsNotReaded();
+		List<Contact> readedMsg = contactService.getContactPostsReaded();
+		model.addAttribute("notReadedMsg", notReadedMsg);
+		model.addAttribute("readedMsg", readedMsg);
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "admin/contactform";
+	}
+
+	@RequestMapping(value = { "/admin/contactform_readedmsg-{id}" }, method = RequestMethod.GET)
+	public String doReadedContactMsg(@PathVariable int id) {
+		contactService.readContactPost(id);
+		return "redirect:/admin/contactform";
+	}
+
+	@RequestMapping(value = { "/admin/contactform_notreadedmsg-{id}" }, method = RequestMethod.GET)
+	public String doNotReadedContactMsg(@PathVariable int id) {
+		contactService.notReadContactPost(id);
+		return "redirect:/admin/contactform";
+	}
+
+	@RequestMapping(value = { "/admin/contactform_deletemsg-{id}" }, method = RequestMethod.GET)
+	public String deleteContactMsg(@PathVariable int id) {
+		contactService.deleteContactPost(id);
+		return "redirect:/admin/contactform";
+	}
+
+	/** Number of not readed msg in Contact Form */
+	@ModelAttribute("newMsgs")
+	public int newMsgs() {
+		return contactService.getContactPostsNotReaded().size();
+	}
 
 	/** Roles */
 	@ModelAttribute("roles")

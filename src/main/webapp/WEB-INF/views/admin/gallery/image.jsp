@@ -20,7 +20,7 @@
         </c:choose>
     </div>
 
-    <form:form method="POST" modelAttribute="image" class="form-horizontal">
+    <form:form method="POST" modelAttribute="gallery" class="form-horizontal">
         <form:input type="hidden" path="id" id="id"/>
 
         <div class="row">

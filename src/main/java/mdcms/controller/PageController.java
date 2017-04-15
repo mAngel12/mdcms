@@ -43,6 +43,9 @@ public class PageController {
 	GalleryService galleryService;
 
 	@Autowired
+	ContactService contactService;
+
+	@Autowired
 	NavigationMenuService navigationMenuService;
 
 	@RequestMapping(value = {"/", "home", "posts"}, method = RequestMethod.GET)
@@ -104,6 +107,25 @@ public class PageController {
 	public String gallery(ModelMap model) {
 		model.addAttribute("gallery", galleryService.getGallery());
 		return "gallery";
+	}
+
+	@RequestMapping(value = { "contact" }, method = RequestMethod.GET)
+	public String contact(ModelMap model) {
+		model.addAttribute("contact", new Contact());
+		return "contact";
+	}
+
+	@RequestMapping(value = { "contact" }, method = RequestMethod.POST)
+	public String addMsg(@Valid Contact contact, BindingResult result,
+							 ModelMap model) {
+
+		if (result.hasErrors()) {
+			return "contact";
+		}
+
+		contactService.addContactPost(contact);
+
+		return "redirect:/contact?success";
 	}
 
 	@ModelAttribute("generalConfig")
