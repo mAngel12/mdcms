@@ -7,3 +7,9 @@
 .thumbnail {
     margin-bottom:6px;
 }
+
+@media screen and (max-width: 800px) {
+    .modal-dialog {
+        width:auto;
+    }
+}

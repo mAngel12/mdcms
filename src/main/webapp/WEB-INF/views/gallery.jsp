@@ -11,9 +11,12 @@
     <h2>Gallery</h2>
     <hr>
     <br>
-    <c:forEach items="${gallery}" var="image">
-        <div class="col-lg-3 col-sm-4 col-xs-6"><a title="${image.title}, added ${image.date}" ><img class="thumbnail img-responsive" src="${image.address}"></a></div>
-    </c:forEach>
+    <div class="row">
+        <c:forEach items="${gallery}" var="image">
+            <div class="col-lg-3 col-sm-4 col-xs-6"><a title="${image.title}, added ${image.date}" ><img class="thumbnail img-responsive" src="${image.address}"></a></div>
+        </c:forEach>
+    </div>
+
 
     <div tabindex="-1" class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">

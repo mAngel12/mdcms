@@ -77,7 +77,7 @@ public class AdminController {
 	AuthenticationTrustResolver authenticationTrustResolver;
 
 	/** Admin Homepage */
-	@RequestMapping(value = { "/admin/", "/admin/home" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/admin", "/admin/", "/admin/home" }, method = RequestMethod.GET)
 	public String homeAdmin(ModelMap model) {
 		model.addAttribute("site", generalConfigurationService.getConfig());
 		model.addAttribute("numberOfPosts", postService.getPosts().size());

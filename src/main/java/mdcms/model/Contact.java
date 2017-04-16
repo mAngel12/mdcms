@@ -2,6 +2,7 @@ package mdcms.model;
 
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,6 +30,7 @@ public class Contact {
     private String author;
 
     @NotEmpty
+    @Email
     @Column(name = "EMAIL")
     private String email;
 

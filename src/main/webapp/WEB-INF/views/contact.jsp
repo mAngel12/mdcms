@@ -58,11 +58,11 @@
                 </div>
             </div>
         </div>
-
+        <br>
         <div class="form-actions floatRight">
             <input type="submit" value="Send Message" class="btn btn-success"/>
         </div>
     </form:form>
-    <br><br>
+    <br>
 
 </div>
