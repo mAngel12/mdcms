@@ -70,12 +70,6 @@ public class AdminController {
 	@Autowired
 	MessageSource messageSource;
 
-	@Autowired
-	PersistentTokenBasedRememberMeServices persistentTokenBasedRememberMeServices;
-
-	@Autowired
-	AuthenticationTrustResolver authenticationTrustResolver;
-
 	/** Admin Homepage */
 	@RequestMapping(value = { "/admin", "/admin/", "/admin/home" }, method = RequestMethod.GET)
 	public String homeAdmin(ModelMap model) {
@@ -95,7 +89,7 @@ public class AdminController {
 
 	/** Admin Users Panel */
 	@RequestMapping(value = "/admin/users/list", method = RequestMethod.GET)
-	public String listUsersAdmin(ModelMap model) {
+	public String listUsers(ModelMap model) {
 
 		List<User> users = userService.findAllUsers();
 		model.addAttribute("users", users);
@@ -173,7 +167,7 @@ public class AdminController {
 	/** Posts */
 
 	@RequestMapping(value = "/admin/posts/posts", method = RequestMethod.GET)
-	public String listPostsAdmin(ModelMap model) {
+	public String listPosts(ModelMap model) {
 		List<Post> posts = postService.getPosts();
 		model.addAttribute("posts", posts);
 		model.addAttribute("loggedinuser", getPrincipal());
@@ -218,7 +212,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = { "/admin/posts/edit-{id}" }, method = RequestMethod.POST)
-	public String updateUser(@Valid Post post, BindingResult result,
+	public String updatePost(@Valid Post post, BindingResult result,
 							 ModelMap model, @PathVariable int id) {
 
 		if (result.hasErrors()) {
@@ -245,7 +239,7 @@ public class AdminController {
 	/** Posts Categories */
 
 	@RequestMapping(value = "/admin/posts/categories", method = RequestMethod.GET)
-	public String listCategoriesAdmin(ModelMap model) {
+	public String listCategories(ModelMap model) {
 
 		List<PostCategory> categories = postCategoryService.getCategories();
 		model.addAttribute("categories", categories);
@@ -313,7 +307,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin/posts/comments", method = RequestMethod.GET)
-	public String listCommentsAdmin(ModelMap model) {
+	public String listComments(ModelMap model) {
 		List<PostComment> comments = postCommentService.getComments();
 		model.addAttribute("comments", comments);
 		model.addAttribute("loggedinuser", getPrincipal());
@@ -355,7 +349,7 @@ public class AdminController {
 	/** Pages */
 
 	@RequestMapping(value = "/admin/pages/list", method = RequestMethod.GET)
-	public String listPagesAdmin(ModelMap model) {
+	public String listPages(ModelMap model) {
 		List<Page> pages = pageService.getPages();
 		model.addAttribute("pages", pages);
 		model.addAttribute("loggedinuser", getPrincipal());
@@ -436,7 +430,7 @@ public class AdminController {
 	/** Nav Menu */
 
 	@RequestMapping(value = "/admin/website/navmenu_list", method = RequestMethod.GET)
-	public String listNavMenuAdmin(ModelMap model) {
+	public String listNavMenu(ModelMap model) {
 		List<NavigationMenu> navigationMenuLinks = navigationMenuService.getNavs();
 		model.addAttribute("navigationMenuLinks", navigationMenuLinks);
 		model.addAttribute("loggedinuser", getPrincipal());
@@ -503,7 +497,7 @@ public class AdminController {
 	/** Left Sidebar Menu */
 
 	@RequestMapping(value = "/admin/website/leftsidebar_list", method = RequestMethod.GET)
-	public String listLeftSidebarAdmin(ModelMap model) {
+	public String listLeftSidebar(ModelMap model) {
 		List<LeftSidebar> leftSidebarPanels = leftSidebarService.getPanels();
 		model.addAttribute("leftSidebarPanels", leftSidebarPanels);
 		model.addAttribute("loggedinuser", getPrincipal());
@@ -570,7 +564,7 @@ public class AdminController {
 	/** Right Sidebar Menu */
 
 	@RequestMapping(value = "/admin/website/rightsidebar_list", method = RequestMethod.GET)
-	public String listRightSidebarAdmin(ModelMap model) {
+	public String listRightSidebar(ModelMap model) {
 		List<RightSidebar> rightSidebarPanels = rightSidebarService.getPanels();
 		model.addAttribute("rightSidebarPanels", rightSidebarPanels);
 		model.addAttribute("loggedinuser", getPrincipal());
@@ -662,7 +656,7 @@ public class AdminController {
 	/** Gallery */
 
 	@RequestMapping(value = "/admin/gallery/list", method = RequestMethod.GET)
-	public String listGalleryAdmin(ModelMap model) {
+	public String listGallery(ModelMap model) {
 		List<Gallery> gallery = galleryService.getGallery();
 		model.addAttribute("gallery", gallery);
 		model.addAttribute("loggedinuser", getPrincipal());
@@ -704,7 +698,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = { "/admin/gallery/edit-{id}" }, method = RequestMethod.POST)
-	public String updateUser(@Valid Gallery gallery, BindingResult result,
+	public String updateImage(@Valid Gallery gallery, BindingResult result,
 							 ModelMap model, @PathVariable int id) {
 
 		if (result.hasErrors()) {
@@ -730,7 +724,7 @@ public class AdminController {
 	/** Contact Form */
 
 	@RequestMapping(value = "/admin/contactform", method = RequestMethod.GET)
-	public String listContactMsgAdmin(ModelMap model) {
+	public String listContactMsg(ModelMap model) {
 		List<Contact> notReadedMsg = contactService.getContactPostsNotReaded();
 		List<Contact> readedMsg = contactService.getContactPostsReaded();
 		model.addAttribute("notReadedMsg", notReadedMsg);
@@ -759,8 +753,8 @@ public class AdminController {
 
 	/** Number of not readed msg in Contact Form */
 	@ModelAttribute("newMsgs")
-	public int newMsgs() {
-		return contactService.getContactPostsNotReaded().size();
+	public String newMsgs() {
+		return Integer.toString(contactService.getContactPostsNotReaded().size());
 	}
 
 	/** Roles */
@@ -776,31 +770,7 @@ public class AdminController {
 		return "admin/accessdenied";
 	}
 
-
-	/** Log-in Panel */
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginPage() {
-		if (isCurrentAuthenticationAnonymous()) {
-			return "login";
-		} else {
-			return "redirect:/admin";
-		}
-	}
-
-	/** Logout */
-	@RequestMapping(value="/logout", method = RequestMethod.GET)
-	public String logoutPage (HttpServletRequest request, HttpServletResponse response){
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if (auth != null){
-			persistentTokenBasedRememberMeServices.logout(request, response, auth);
-			SecurityContextHolder.getContext().setAuthentication(null);
-		}
-		return "redirect:/login?logout";
-	}
-
-	/**
-	 * This method returns the principal[user-name] of logged-in user.
-	 */
+	/** This method returns the principal[user-name] of logged-in user. */
 	private String getPrincipal(){
 		String userName;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -811,15 +781,6 @@ public class AdminController {
 			userName = principal.toString();
 		}
 		return userName;
-	}
-
-
-	/**
-	 * This method returns true if users is already authenticated [logged-in], else false.
-	 */
-	private boolean isCurrentAuthenticationAnonymous() {
-		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		return authenticationTrustResolver.isAnonymous(authentication);
 	}
 
 }
