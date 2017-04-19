@@ -50,3 +50,4 @@ jdbc.password = your password
 lower_case_table_names=1
 ```
 6. Website with example content should be installed.
+7. Default login to Admin Panel is: `admin`and password: `admin`.
