@@ -51,14 +51,7 @@ public class HibernateTokenRepositoryImpl extends AbstractDao<String, Persistent
     @Override
     public void removeUserTokens(String username) {
         logger.info("Removing Token if any for user : {}", username);
-        Criteria crit = createEntityCriteria();
-        crit.add(Restrictions.eq("username", username));
-        PersistentLogin persistentLogin = (PersistentLogin) crit.uniqueResult();
-        if (persistentLogin != null) {
-            logger.info("rememberMe was selected");
-            delete(persistentLogin);
-        }
-
+        createSQLQuery("DELETE FROM PERSISTENT_LOGINS WHERE username = '"+username+"'");
     }
 
     @Override
