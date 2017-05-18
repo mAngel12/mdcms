@@ -6,7 +6,17 @@ body {
 	background-color: #171516;
 }
 
-.header h1, .header h3 {
+.header h1 a {
+	text-align: left;
+	text-decoration: none;
+	color: #c0c0c0;
+}
+
+.header h1 a:hover {
+	text-decoration: none;
+}
+
+.header h3 {
 	text-align: left;
 	color: #c0c0c0;
 }

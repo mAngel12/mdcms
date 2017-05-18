@@ -15,4 +15,5 @@
     <li>The site has <span class="label label-default">${numberOfPages}</span> additional subpages.</li>
     <li>You have <span class="label label-default">${numberOfNotReadedMsg}</span> new messages on the contact form. Generally, you have <span class="label label-default">${numberOfMsg}</span> messages.</li>
     <li>There are <span class="label label-default">${numberOfImages}</span> pictures in the gallery.</li>
+    <li>You are using <strong>mdCMS v${version}</strong>. Check for updates at <a href="http://dultzdev.com" >dultzdev.com</a>.</li>
 </ul>

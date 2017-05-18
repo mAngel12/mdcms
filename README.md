@@ -29,7 +29,6 @@ mdCMS is a content management system to create a simple websites (blogs, portfol
 - Hibernate
 - Maven
 - Java Persistance API
-- JSP
 - CSS3
 - Bootstrap
 
@@ -50,4 +49,4 @@ jdbc.password = your password
 lower_case_table_names=1
 ```
 6. Website with example content should be installed.
-7. Default login to Admin Panel is: `admin`and password: `admin`.
+7. Default login to Admin Panel is: `admin` and password: `admin`.

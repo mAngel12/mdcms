@@ -10,7 +10,9 @@ import javax.validation.Valid;
 import mdcms.model.*;
 import mdcms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@PropertySource(value = { "classpath:application.properties" })
 @RequestMapping("/")
 @SessionAttributes("roles")
 public class AdminController {
@@ -83,6 +86,7 @@ public class AdminController {
 		model.addAttribute("numberOfNotReadedMsg", contactService.getContactPostsNotReaded().size());
 		model.addAttribute("numberOfMsg", contactService.getContactPosts().size());
 		model.addAttribute("numberOfImages",galleryService.getGallery().size());
+		model.addAttribute("version", versionInfo);
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "admin/home";
 	}
@@ -782,5 +786,8 @@ public class AdminController {
 		}
 		return userName;
 	}
+
+	@Value("${version.info}")
+	private String versionInfo;
 
 }
