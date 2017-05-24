@@ -15,10 +15,6 @@
         <put-attribute name="title" value="Home"/>
         <put-attribute name="body" value="/WEB-INF/views/home.jsp" />
     </definition>
-    <definition name="post" extends="base">
-        <put-attribute name="title" value="Post"/>
-        <put-attribute name="body" value="/WEB-INF/views/post.jsp" />
-    </definition>
     <definition name="allposts" extends="base">
         <put-attribute name="title" value="Posts"/>
         <put-attribute name="body" value="/WEB-INF/views/allposts.jsp"/>
@@ -27,11 +23,23 @@
         <put-attribute name="title" value="Posts by Category"/>
         <put-attribute name="body" value="/WEB-INF/views/postcategory.jsp"/>
     </definition>
-    <definition name="contact" extends="base">
+
+    <definition name="capthas"
+                template="/WEB-INF/layout/default/page-captha.jsp">
+        <put-attribute name="header" value="/WEB-INF/layout/default/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/layout/default/menu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/default/footer.jsp"/>
+        <put-attribute name="leftpanel" value="/WEB-INF/layout/default/leftpanel.jsp"/>
+        <put-attribute name="rightpanel" value="/WEB-INF/layout/default/rightpanel.jsp"/>
+    </definition>
+    <definition name="post" extends="capthas">
+        <put-attribute name="title" value="Post"/>
+        <put-attribute name="body" value="/WEB-INF/views/post.jsp" />
+    </definition>
+    <definition name="contact" extends="capthas">
         <put-attribute name="title" value="Contact Form"/>
         <put-attribute name="body" value="/WEB-INF/views/contact.jsp"/>
     </definition>
-
 
     <definition name="galleries"
                 template="/WEB-INF/layout/default/page-gallery.jsp">

@@ -48,8 +48,19 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable" for="content">Captha: </label>
+                <div class="col-md-7">
+                    <p id="operation"/></p>
+                    <p><input type="number" id="answer" class="form-control input-sm" value="1" min="1" max="10"/></p>
+                    <p><input type="button" id="capthaButton" value="Check Captha!" class="btn btn-primary btn-block" /></p>
+                </div>
+            </div>
+        </div>
+
         <div class="form-actions floatRight">
-            <input type="submit" value="Add Comment" class="btn btn-success"/>
+            <input id="add" type="submit" value="Add Comment" class="btn btn-success" disabled = "true"/>
         </div>
     </form:form>
     <br><br>
