@@ -22,26 +22,26 @@ public class Post {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID")
-    private Integer id;
+    protected Integer id;
 
     @NotEmpty
     @Column(name="TITLE")
-    private String title;
+    protected String title;
 
     @NotNull
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "DATE", nullable = false)
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    private LocalDate date;
+    protected LocalDate date;
 
     @NotNull
     @OneToOne
     @JoinColumn(name="CATEGORY_ID")
-    private PostCategory category;
+    protected PostCategory category;
 
     @NotEmpty
     @Column(name="CONTENT")
-    private String content;
+    protected String content;
 
     public Integer getId() {
         return id;

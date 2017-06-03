@@ -9,7 +9,7 @@
         <h5><span class="glyphicon glyphicon-time"></span> Published on ${post.date} in the category "<a href="<c:url value='/postcategory-${post.category.categoryId}' />" >${post.category.categoryName}</a>"</h5>
         <p>${post.content}</p><br/>
         <div class="viewpost" >
-            <a class="btn btn-default" role="button" href="<c:url value='/post-${post.id}' />" > View more/Comment</a>
+            <a class="btn btn-default" role="button" href="<c:url value='/post-${post.id}' />" > <span class="badge">${post.numberOfComments}</span> Comments</a>
         </div>
     </c:forEach>
     <br/>

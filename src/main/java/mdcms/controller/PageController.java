@@ -1,6 +1,7 @@
 package mdcms.controller;
 
 import mdcms.model.*;
+import mdcms.model.other.PostWithNumberOfComments;
 import mdcms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -50,7 +52,11 @@ public class PageController {
 
 	@RequestMapping(value = {"/", "home", "posts"}, method = RequestMethod.GET)
 	public String home(ModelMap model) {
-		List<Post> posts = postService.getLastPosts(10);
+		List<Post> lastPosts = postService.getLastPosts(10);
+		List<PostWithNumberOfComments> posts = new ArrayList<PostWithNumberOfComments>();
+		for(int i = 0; i < 10; i++) {
+			posts.add(new PostWithNumberOfComments(lastPosts.get(i), postCommentService.getCommentsByPost(lastPosts.get(i).getId()).size()));
+		}
 		model.addAttribute("posts", posts);
 		return "home";
 	}

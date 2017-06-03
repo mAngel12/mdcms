@@ -12,6 +12,23 @@
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	  <script src="<s:url value="/resources/admin/js/script.js" />"></script>
+	  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+	  <script>
+		  tinymce.init({
+			  selector:'textarea',
+              height: 250,
+			  menubar: false,
+              theme: 'modern',
+              plugins: [
+                  'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                  'searchreplace wordcount visualblocks visualchars code fullscreen',
+                  'insertdatetime media nonbreaking save table contextmenu directionality',
+                  'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc help'
+              ],
+              toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media | forecolor backcolor emoticons',
+              image_advtab: true
+		  });
+	  </script>
 	</head>
 <body>
 
