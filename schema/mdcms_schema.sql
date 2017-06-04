@@ -116,6 +116,19 @@ CREATE TABLE `right_sidebar` (
   `order` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL,
+  `web_posts_in_homepage` int(11) NOT NULL,
+  `web_commenting_on_posts` tinyint(1) NOT NULL,
+  `web_last5posts_on_right_sidebar` tinyint(1) NOT NULL,
+  `web_categories_on_left_sidebar` tinyint(1) NOT NULL,
+  `web_link_to_admin_panel_in_menu` tinyint(1) NOT NULL,
+  `web_tinymce_cloud_api_key` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `settings` (`id`, `web_posts_in_homepage`, `web_commenting_on_posts`, `web_last5posts_on_right_sidebar`, `web_categories_on_left_sidebar`, `web_link_to_admin_panel_in_menu`, `web_tinymce_cloud_api_key`) VALUES
+(1, '10', '1', '1', '1', '1', '');
+
 CREATE TABLE `user_profile` (
   `id` bigint(20) NOT NULL,
   `type` varchar(30) NOT NULL
@@ -168,6 +181,9 @@ ALTER TABLE `post_comments`
 ALTER TABLE `right_sidebar`
   ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
 ALTER TABLE `user_profile`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `type` (`type`);
@@ -205,6 +221,9 @@ ALTER TABLE `post_comments`
 
 ALTER TABLE `right_sidebar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+ALTER TABLE `settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 ALTER TABLE `user_profile`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

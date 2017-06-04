@@ -13,71 +13,73 @@
         <p>${post.content}</p>
     <hr>
     <br>
-    <h4><span class="glyphicon glyphicon-comment"></span> Leave a Comment:</h4><br/>
+    <c:if test = "${commentingOnPosts}">
+        <h4><span class="glyphicon glyphicon-comment"></span> Leave a Comment:</h4><br/>
 
-    <form:form method="POST" modelAttribute="postComment" class="form-horizontal">
-        <form:input type="hidden" path="id" id="id"/>
+        <form:form method="POST" modelAttribute="postComment" class="form-horizontal">
+            <form:input type="hidden" path="id" id="id"/>
 
-        <c:set var="ndate" value="<%=new java.util.Date()%>" />
-        <fmt:formatDate pattern="yyyy-MM-dd" type="date" value="${ndate}" var="nowdate"/>
-        <form:input type="hidden" id="date" path="date" value="${nowdate}" />
+            <c:set var="ndate" value="<%=new java.util.Date()%>" />
+            <fmt:formatDate pattern="yyyy-MM-dd" type="date" value="${ndate}" var="nowdate"/>
+            <form:input type="hidden" id="date" path="date" value="${nowdate}" />
 
-        <form:input type="hidden" id="post" path="post.id" value="${post.id}" />
+            <form:input type="hidden" id="post" path="post.id" value="${post.id}" />
 
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label class="col-md-3 control-lable" for="author">Your Name: </label>
-                <div class="col-md-7">
-                    <form:input type="text" path="author" id="author" class="form-control input-sm"/>
-                    <div class="has-error">
-                        <form:errors path="author" class="help-inline"/>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3 control-lable" for="author">Your Name: </label>
+                    <div class="col-md-7">
+                        <form:input type="text" path="author" id="author" class="form-control input-sm"/>
+                        <div class="has-error">
+                            <form:errors path="author" class="help-inline"/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label class="col-md-3 control-lable" for="content">Your Comment: </label>
-                <div class="col-md-7">
-                    <form:textarea rows="12" path="content" id="content" class="form-control input-sm" />
-                    <div class="has-error">
-                        <form:errors path="content" class="help-inline"/>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3 control-lable" for="content">Your Comment: </label>
+                    <div class="col-md-7">
+                        <form:textarea rows="12" path="content" id="content" class="form-control input-sm" />
+                        <div class="has-error">
+                            <form:errors path="content" class="help-inline"/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label class="col-md-3 control-lable" for="content">Captha: </label>
-                <div class="col-md-7">
-                    <p id="operation"/></p>
-                    <p><input type="number" id="answer" class="form-control input-sm" value="1" min="1" max="10"/></p>
-                    <p><input type="button" id="capthaButton" value="Check Captha!" class="btn btn-primary btn-block" /></p>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3 control-lable" for="content">Captha: </label>
+                    <div class="col-md-7">
+                        <p id="operation"/></p>
+                        <p><input type="number" id="answer" class="form-control input-sm" value="1" min="1" max="10"/></p>
+                        <p><input type="button" id="capthaButton" value="Check Captha!" class="btn btn-primary btn-block" /></p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-actions floatRight">
-            <input id="add" type="submit" value="Add Comment" class="btn btn-success" disabled = "true"/>
-        </div>
-    </form:form>
-    <br><br>
+            <div class="form-actions floatRight">
+                <input id="add" type="submit" value="Add Comment" class="btn btn-success" disabled = "true"/>
+            </div>
+        </form:form>
+        <br><br>
 
-    <p><span class="badge">${numberOfComments}</span> Comments:</p><br>
+        <p><span class="badge">${numberOfComments}</span> Comments:</p><br>
 
-    <div class="row">
-        <c:forEach items="${comments}" var="comment">
-            <div class="col-sm-12">
-                <h4><span class="glyphicon glyphicon-hand-right" ></span> <spring:escapeBody htmlEscape="true" >${comment.author}</spring:escapeBody> <small> ${comment.date}</small></h4>
-            <p>
-                <spring:escapeBody htmlEscape="true" >
-                    ${comment.content}
-                </spring:escapeBody>
-            </p>
-            <br>
+        <div class="row">
+            <c:forEach items="${comments}" var="comment">
+                <div class="col-sm-12">
+                    <h4><span class="glyphicon glyphicon-hand-right" ></span> <spring:escapeBody htmlEscape="true" >${comment.author}</spring:escapeBody> <small> ${comment.date}</small></h4>
+                <p>
+                    <spring:escapeBody htmlEscape="true" >
+                        ${comment.content}
+                    </spring:escapeBody>
+                </p>
+                <br>
+            </div>
+            </c:forEach>
         </div>
-        </c:forEach>
-    </div>
+    </c:if>
 </div>

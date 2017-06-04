@@ -12,7 +12,7 @@
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	  <script src="<s:url value="/resources/admin/js/script.js" />"></script>
-	  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+	  <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=${tinyMCE}"></script>
 	  <script>
 		  tinymce.init({
 			  selector:'textarea',

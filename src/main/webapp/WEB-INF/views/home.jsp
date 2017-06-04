@@ -8,9 +8,11 @@
         <h2>${post.title}</h2>
         <h5><span class="glyphicon glyphicon-time"></span> Published on ${post.date} in the category "<a href="<c:url value='/postcategory-${post.category.categoryId}' />" >${post.category.categoryName}</a>"</h5>
         <p>${post.content}</p><br/>
-        <div class="viewpost" >
-            <a class="btn btn-default" role="button" href="<c:url value='/post-${post.id}' />" > <span class="badge">${post.numberOfComments}</span> Comments</a>
-        </div>
+        <c:if test = "${commentingOnPosts}">
+            <div class="viewpost" >
+                <a class="btn btn-default" role="button" href="<c:url value='/post-${post.id}' />" > <span class="badge">${post.numberOfComments}</span> Comments</a>
+            </div>
+        </c:if>
     </c:forEach>
     <br/>
     <br/>

@@ -50,11 +50,14 @@ public class PageController {
 	@Autowired
 	NavigationMenuService navigationMenuService;
 
+	@Autowired
+	SettingsService settingsService;
+
 	@RequestMapping(value = {"/", "home", "posts"}, method = RequestMethod.GET)
 	public String home(ModelMap model) {
-		List<Post> lastPosts = postService.getLastPosts(10);
+		List<Post> lastPosts = postService.getLastPosts(settingsService.getSettings().getPostsInHomepage());
 		List<PostWithNumberOfComments> posts = new ArrayList<PostWithNumberOfComments>();
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < postService.getLastPosts(settingsService.getSettings().getPostsInHomepage()).size(); i++) {
 			posts.add(new PostWithNumberOfComments(lastPosts.get(i), postCommentService.getCommentsByPost(lastPosts.get(i).getId()).size()));
 		}
 		model.addAttribute("posts", posts);
@@ -157,5 +160,21 @@ public class PageController {
 	@ModelAttribute("rightSidebarPanels")
 	public List<RightSidebar> rightSidebarPanels() {
 		return rightSidebarService.getPanels();
+	}
+	@ModelAttribute("last5PostsOn")
+	public boolean last5PostsOn() {
+		return settingsService.getSettings().isLast5postsOnRightSidebar();
+	}
+	@ModelAttribute("categoriesPanelOn")
+	public boolean categoriesPanelOn() {
+		return settingsService.getSettings().isCategoriesOnLeftSidebar();
+	}
+	@ModelAttribute("commentingOnPosts")
+	public boolean commentingOnPosts() {
+		return settingsService.getSettings().isCommentingOnPosts();
+	}
+	@ModelAttribute("linkToAdminPanelOn")
+	public boolean linkToAdminPanelOn() {
+		return settingsService.getSettings().isLinkToAdminPanelInMenu();
 	}
 }

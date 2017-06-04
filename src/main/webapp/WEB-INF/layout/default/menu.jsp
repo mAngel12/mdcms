@@ -16,9 +16,11 @@
           <li><a href="${navigationMenu.url}">${navigationMenu.title}</a></li>
         </c:forEach>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="admin/"><span class="glyphicon glyphicon-log-in"></span> Admin Panel</a></li>
-      </ul>
+      <c:if test = "${linkToAdminPanelOn}">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="admin/"><span class="glyphicon glyphicon-log-in"></span> Admin Panel</a></li>
+        </ul>
+      </c:if>
     </div>
   </div>
 </nav>

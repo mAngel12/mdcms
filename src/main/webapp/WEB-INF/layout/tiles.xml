@@ -145,6 +145,15 @@
         <put-attribute name="body" value="/WEB-INF/views/admin/config/general-success.jsp" />
     </definition>
 
+    <definition name="admin/config/other" extends="admin/base">
+        <put-attribute name="title" value="Other Settings - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/config/other.jsp" />
+    </definition>
+    <definition name="admin/config/other-success" extends="admin/base">
+        <put-attribute name="title" value="Other Settings Success - mdCMS Admin Panel"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/config/other-success.jsp" />
+    </definition>
+
     <definition name="admin/pages/list" extends="admin/base">
         <put-attribute name="title" value="Pages List - mdCMS Admin Panel"/>
         <put-attribute name="body" value="/WEB-INF/views/admin/pages/list.jsp" />

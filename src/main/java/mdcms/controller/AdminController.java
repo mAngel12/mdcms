@@ -71,6 +71,9 @@ public class AdminController {
 	ContactService contactService;
 
 	@Autowired
+	SettingsService settingsService;
+
+	@Autowired
 	MessageSource messageSource;
 
 	/** Admin Homepage */
@@ -348,6 +351,29 @@ public class AdminController {
 		model.addAttribute("success", "General configuration updated successfully.");
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "admin/config/general-success";
+	}
+
+	@RequestMapping(value = { "/admin/config/other" }, method = RequestMethod.GET)
+	public String editOtherSettings(ModelMap model) {
+		model.addAttribute("settings", settingsService.getSettings());
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "admin/config/other";
+	}
+
+	@RequestMapping(value = { "/admin/config/other" }, method = RequestMethod.POST)
+	public String updateOtherSettings(@Valid Settings settings, BindingResult result,
+									  ModelMap model) {
+
+		if (result.hasErrors()) {
+			model.addAttribute("loggedinuser", getPrincipal());
+			return "admin/config/other";
+		}
+
+		settingsService.saveSettings(settings);
+
+		model.addAttribute("success", "Other settings updated successfully.");
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "admin/config/other-success";
 	}
 
 	/** Pages */
@@ -753,6 +779,12 @@ public class AdminController {
 	public String deleteContactMsg(@PathVariable int id) {
 		contactService.deleteContactPost(id);
 		return "redirect:/admin/contactform";
+	}
+
+	/** TinyMCE Cloud API Key */
+	@ModelAttribute("tinyMCE")
+	public String tinyMCE() {
+		return settingsService.getSettings().getTinyMCECloudAPIKey();
 	}
 
 	/** Number of not readed msg in Contact Form */
