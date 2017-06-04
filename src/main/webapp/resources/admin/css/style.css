@@ -151,3 +151,12 @@ footer a {
     color: black;
     text-shadow: white 0px 0px 5px;
 }
+
+.home-badge {
+    color: white;
+    background-color: dimgrey;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 85%;
+    font-weight: bold;
+}

@@ -4,16 +4,16 @@
 <h4><strong><i class="fa fa-bar-chart"></i> Basic information and statistics: </strong></h4>
 <br/>
 <ul>
-    <li>Your website is called <span class="label label-default">${site.title}</span>.</li>
-    <li>The description of the site is: <span class="label label-default">${site.description}</span>.</li>
-    <li>The keywords are: <span class="label label-default">${site.keywords}</span>.</li>
-    <li>The author of the site is: <span class="label label-default">${site.author}</span>.</li>
-    <li>In your database there are <span class="label label-default">${numberOfPosts}</span> posts in <span class="label label-default">${numberOfCategories}</span> categories.</li>
-    <li>The last post has the title <span class="label label-default">${lastPost.title}</span>, was published on <span class="label label-default">${lastPost.date}</span> in the <span class="label label-default">${lastPost.category.categoryName}</span> category.</li>
-    <li>Your readers shared <span class="label label-default">${numberOfComments}</span> comments under your posts.</li>
-    <li>There are <span class="label label-default">${numberOfUsers}</span> created administrator or moderator accounts.</li>
-    <li>The site has <span class="label label-default">${numberOfPages}</span> additional subpages.</li>
-    <li>You have <span class="label label-default">${numberOfNotReadedMsg}</span> new messages on the contact form. Generally, you have <span class="label label-default">${numberOfMsg}</span> messages.</li>
-    <li>There are <span class="label label-default">${numberOfImages}</span> pictures in the gallery.</li>
-    <li>You are using <strong>mdCMS v${version}</strong>. Check for updates at <a href="http://dultzdev.com" >dultzdev.com</a>.</li>
+    <li>Your website is called <code class="home-badge">${site.title}</code>.</li>
+    <li>The description of the site is: <code class="home-badge">${site.description}</code>.</li>
+    <li>The keywords are: <code class="home-badge">${site.keywords}</code>.</li>
+    <li>The author of the site is: <code class="home-badge">${site.author}</code>.</li>
+    <li>In your database there are <code class="home-badge">${numberOfPosts}</code> posts in <code class="home-badge">${numberOfCategories}</code> categories.</li>
+    <li>The last post has the title <code class="home-badge">${lastPost.title}</code>, was published on <code class="home-badge">${lastPost.date}</code> in the <code class="home-badge">${lastPost.category.categoryName}</code> category.</li>
+    <li>Your readers shared <code class="home-badge">${numberOfComments}</code> comments under your posts.</li>
+    <li>There are <code class="home-badge">${numberOfUsers}</code> created administrator or moderator accounts.</li>
+    <li>The site has <code class="home-badge">${numberOfPages}</code> additional subpages.</li>
+    <li>You have <code class="home-badge">${numberOfNotReadedMsg}</code> new messages on the contact form. Generally, you have <code class="home-badge">${numberOfMsg}</code> messages.</li>
+    <li>There are <code class="home-badge">${numberOfImages}</code> pictures in the gallery.</li>
+    <li>You are using <code class="home-badge">mdCMS v${version}</code>. Check for updates at <a href="http://dultzdev.com" >dultzdev.com</a>.</li>
 </ul>
